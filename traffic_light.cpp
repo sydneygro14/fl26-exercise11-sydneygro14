@@ -1,33 +1,28 @@
-// traffic_light.cpp
+// traffic_light.h
+#ifndef TRAFFIC_LIGHT_H
+#define TRAFFIC_LIGHT_H
 
-#include "traffic_light.h"
 #include <QWidget>
-#include <QLayout>
-#include <QRadioButton>
 
-TrafficLight::TrafficLight(QWidget * parent): QWidget(parent) {
+class QRadioButton;
 
-  // Add the red traffic light
-  redlight = new QRadioButton;
-  redlight->setEnabled(false);
-  redlight->toggle();   // initialize the red light to be ON
-  redlight->setStyleSheet("QRadioButton::indicator:checked { background-color: red;}");
-  
-    yellowlight = new QRadioButton;
-    yellowlight->setEnabled(false);
-    yellowlight->setStyleSheet("QRadioButton::indicator:checked { background-color: yellow;}");
-      
-    greenlight = new QRadioButton;
-    greenlight->setEnabled(false);
-    greenlight->setStyleSheet("QRadioButton::indicator:checked { background-color: green;}");
-    
-    auto layout = new QVBoxLayout;
-    layout->addWidget(redlight);
-    layout->addWidget(yellowlight);
-    layout->addWidget(greenlight);
+class TrafficLight: public QWidget{
+  Q_OBJECT
 
-    setLayout(layout);
-}
+public:
+  TrafficLight(QWidget * parent = nullptr);
 
+public slots:
+  // advances the light to the next one in the red -> green -> yellow sequence
+  void light_update();
 
-// TO DO: build the light_update() slot function here
+private:
+  QRadioButton * redlight;
+  QRadioButton * yellowlight;
+  QRadioButton * greenlight;
+
+  // tracks which light is currently on, 0 = red, 1 = green, 2 = yellow
+  int current_light;
+};
+
+#endif

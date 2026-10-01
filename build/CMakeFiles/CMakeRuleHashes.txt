@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+49a70596909ef11d8621328b5d74e246 CMakeFiles/trafficlight_autogen
+49a70596909ef11d8621328b5d74e246 CMakeFiles/trafficlight_autogen_timestamp_deps
+30cb8ff4a6d2b04f6a5b23acb42cd444 trafficlight_autogen/timestamp
